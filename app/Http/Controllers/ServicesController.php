@@ -4,19 +4,13 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers;
 
-use Inertia\Inertia;
-use Inertia\Response;
+use Illuminate\Contracts\View\View;
 
 final class ServicesController extends Controller
 {
-    public function index(): Response
+    public function index(): View
     {
-        return Inertia::render('services', [
-            'locale' => app()->getLocale(),
-            'translations' => [
-                'common' => __('common'),
-                'services' => __('services'),
-            ],
+        return view('services', [
             'services' => [
                 [
                     'title' => 'Premium Job Access',

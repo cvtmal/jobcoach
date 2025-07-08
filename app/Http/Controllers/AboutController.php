@@ -4,19 +4,12 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers;
 
-use Inertia\Inertia;
-use Inertia\Response;
+use Illuminate\Contracts\View\View;
 
 final class AboutController extends Controller
 {
-    public function index(): Response
+    public function index(): View
     {
-        return Inertia::render('about', [
-            'locale' => app()->getLocale(),
-            'translations' => [
-                'common' => __('common'),
-                'about' => __('about'),
-            ],
-        ]);
+        return view('about');
     }
 }

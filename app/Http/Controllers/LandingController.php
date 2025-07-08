@@ -4,19 +4,13 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers;
 
-use Inertia\Inertia;
-use Inertia\Response;
+use Illuminate\Contracts\View\View;
 
 final class LandingController extends Controller
 {
-    public function index(): Response
+    public function index(): View
     {
-        return Inertia::render('landing', [
-            'locale' => app()->getLocale(),
-            'translations' => [
-                'common' => __('common'),
-                'landing' => __('landing'),
-            ],
+        return view('landing', [
             'stats' => [
                 'plans' => '5',
                 'monthly_price' => 'CHF 49-399',
