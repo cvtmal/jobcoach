@@ -3,8 +3,8 @@
 @php
     $isLandingStyle = $style === 'landing';
     $navClasses = $isLandingStyle 
-        ? 'absolute top-0 right-0 left-0 z-50 p-6'
-        : 'bg-white border-b border-gray-200 sticky top-0 z-50';
+        ? 'fixed top-0 right-0 left-0 z-50 p-5 transition-all duration-300'
+        : 'bg-white/80 backdrop-blur-md border-b border-gray-200/50 sticky top-0 z-50';
     $containerClasses = $isLandingStyle 
         ? 'mx-auto flex max-w-7xl items-center justify-between'
         : 'mx-auto max-w-7xl px-6 py-4';
@@ -22,64 +22,74 @@
         : 'border border-blue-600 bg-transparent text-blue-600 hover:bg-blue-50';
 @endphp
 
-<nav class="{{ $navClasses }}">
+<nav class="{{ $navClasses }}" x-data="{ open: false, scrolled: false }" @scroll.window="scrolled = (window.pageYOffset > 20)" :class="scrolled ? '{{ $isLandingStyle ? "bg-black/10 backdrop-blur-md" : "" }}' : ''">
     <div class="{{ $containerClasses }}">
         @if(!$isLandingStyle)
             <div class="flex items-center justify-between">
         @endif
         
-        <div class="flex items-center space-x-8">
+        {{-- Logo --}}
+        <div class="flex items-center">
             <a href="/" class="{{ $logoClasses }}">JobHunter 🇨🇭</a>
-            <a href="/services" class="{{ $currentPage === 'services' ? $activeLinkClasses : $linkBaseClasses }}">
-                @if($isLandingStyle)
-                    {{ __('common.navigation.services') }}
-                @else
-                    Services
-                @endif
-            </a>
-            <a href="/pricing" class="{{ $currentPage === 'pricing' ? $activeLinkClasses : $linkBaseClasses }}">
-                @if($isLandingStyle)
-                    {{ __('common.navigation.pricing') }}
-                @else
-                    Pricing
-                @endif
-            </a>
-            <a href="/about" class="{{ $currentPage === 'about' ? $activeLinkClasses : $linkBaseClasses }}">
-                @if($isLandingStyle)
-                    {{ __('common.navigation.about') }}
-                @else
-                    About
-                @endif
-            </a>
         </div>
         
-        <div class="flex items-center space-x-4">
-            @if($isLandingStyle)
-                {{-- Language Switcher --}}
-                <div class="relative inline-block text-left">
-                    <div>
-                        <button type="button" class="inline-flex w-full justify-center gap-x-1.5 rounded-md bg-white/10 px-3 py-2 text-sm font-semibold text-white shadow-sm ring-1 ring-inset ring-white/20 hover:bg-white/20" id="language-menu-button" aria-expanded="true" aria-haspopup="true">
-                            {{ strtoupper(app()->getLocale()) }}
-                            <svg class="-mr-1 h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                                <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd" />
-                            </svg>
-                        </button>
-                    </div>
-                </div>
-                <button class="text-white transition-colors hover:text-gray-300">{{ __('common.navigation.contact') }}</button>
-            @endif
-            
-            <button class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 {{ $buttonClasses }} h-10 px-4 py-2">
-                @if($isLandingStyle)
-                    {{ __('common.buttons.free_consultation') }}
-                @else
-                    Free Consultation
-                @endif
+        {{-- Hamburger Menu Button --}}
+        <div class="flex items-center">
+            <button @click="open = !open" class="inline-flex items-center justify-center p-2 rounded-md transition-colors z-[60]" :class="open ? 'text-white hover:text-gray-300' : '{{ $isLandingStyle ? 'text-white hover:text-gray-300' : 'text-gray-600 hover:text-blue-600' }}'">
+                <span class="sr-only" x-text="open ? 'Close main menu' : 'Open main menu'">Open main menu</span>
+                {{-- Hamburger icon --}}
+                <svg x-show="!open" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+                {{-- Close icon --}}
+                <svg x-show="open" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12" />
+                </svg>
             </button>
         </div>
         
         @if(!$isLandingStyle)
             </div>
         @endif
+    </div>
+    
+    {{-- Mobile Menu --}}
+    <div x-show="open" x-cloak @click.away="open = false" @keydown.escape.window="open = false" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100" x-transition:leave="transition ease-in duration-200" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0" class="fixed inset-0 z-50 min-h-screen bg-black/80 backdrop-blur-lg">
+        <div class="flex flex-col justify-center items-end h-full px-8 py-16" role="menu" aria-orientation="vertical">
+            <div class="flex flex-col space-y-6 items-end">
+                <a href="#services-detail" @click="open = false" class="px-4 py-3 text-right text-3xl hover:font-bold font-medium text-white hover:text-gray-300 transition-colors" role="menuitem">
+                    @if($isLandingStyle)
+                        {{ __('common.navigation.services') }}
+                    @else
+                        Services
+                    @endif
+                </a>
+                <a href="#pricing" @click="open = false" class="px-4 py-3 text-right text-3xl hover:font-bold font-medium text-white hover:text-gray-300 transition-colors" role="menuitem">
+                    @if($isLandingStyle)
+                        {{ __('common.navigation.pricing') }}
+                    @else
+                        Pricing
+                    @endif
+                </a>
+                <a href="#about" @click="open = false" class="px-4 py-3 text-right text-3xl hover:font-bold font-medium text-white hover:text-gray-300 transition-colors" role="menuitem">
+                    @if($isLandingStyle)
+                        {{ __('common.navigation.about') }}
+                    @else
+                        About
+                    @endif
+                </a>
+            </div>
+            
+            @if($isLandingStyle)
+                {{-- Language Switcher --}}
+                <div class="mt-12 flex flex-col items-end space-y-8">
+                    {{-- Language Switcher --}}
+                    <div class="flex items-center space-x-6 px-4">
+                        <button @click="open = false" class="text-xl text-white hover:text-gray-300 transition-colors {{ app()->getLocale() === 'de' ? 'font-semibold' : '' }}">DE</button>
+                        <button @click="open = false" class="text-xl text-white hover:text-gray-300 transition-colors {{ app()->getLocale() === 'en' ? 'font-semibold' : '' }}">EN</button>
+                    </div>
+                </div>
+            @endif
+        </div>
     </div>
 </nav>

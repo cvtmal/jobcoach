@@ -21,10 +21,12 @@ it('displays pricing plans and add-ons', function (): void {
         ->assertViewHas('addOns')
         ->assertViewHas('plans', function (array $plans): bool {
             expect($plans)->toHaveCount(5);
+
             return true;
         })
         ->assertViewHas('addOns', function (array $addOns): bool {
             expect($addOns)->toHaveCount(6);
+
             return true;
         });
 });

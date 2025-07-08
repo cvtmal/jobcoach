@@ -20,6 +20,8 @@ it('loads the landing page with correct data structure', function (): void {
         ->assertViewHas('stats')
         ->assertViewHas('services')
         ->assertViewHas('pricing_preview')
+        ->assertViewHas('plans')
+        ->assertViewHas('addOns')
         ->assertViewHas('stats', function (array $stats): bool {
             expect($stats)->toBeArray()
                 ->toHaveKeys(['plans', 'monthly_price', 'success_rate']);
@@ -36,12 +38,14 @@ it('loads the landing page with correct data structure', function (): void {
             // Check that each service has the required structure
             foreach ($services as $service) {
                 expect($service)->toBeArray()
-                    ->toHaveKeys(['title', 'description', 'image', 'icon']);
+                    ->toHaveKeys(['title', 'description', 'image', 'icon', 'details', 'price']);
 
                 expect($service['title'])->toBeString()->not->toBeEmpty();
                 expect($service['description'])->toBeString()->not->toBeEmpty();
                 expect($service['image'])->toBeString()->not->toBeEmpty();
                 expect($service['icon'])->toBeString()->not->toBeEmpty();
+                expect($service['details'])->toBeArray()->not->toBeEmpty();
+                expect($service['price'])->toBeString()->not->toBeEmpty();
             }
 
             return true;
@@ -61,12 +65,22 @@ it('loads the landing page with correct data structure', function (): void {
             }
 
             return true;
+        })
+        ->assertViewHas('plans', function (array $plans): bool {
+            expect($plans)->toBeArray()->not->toBeEmpty()->toHaveCount(5);
+
+            return true;
+        })
+        ->assertViewHas('addOns', function (array $addOns): bool {
+            expect($addOns)->toBeArray()->not->toBeEmpty()->toHaveCount(6);
+
+            return true;
         });
 });
 
 it('displays content correctly in English locale', function (): void {
     app()->setLocale('en');
-    
+
     $response = get('/');
 
     $response
@@ -78,26 +92,30 @@ it('displays content correctly in English locale', function (): void {
         ->assertSee('Free Consultation') // English button
         ->assertSee('Premium Job Access') // English service title
         ->assertSee('Professional Documents') // English service title
-        ->assertSee('Discreet Management') // English service title
+        ->assertSee('Complete Application Management') // English service title
+        ->assertSee('Active Job Search') // English service title
+        ->assertSee('Full-Service Support') // English service title
         ->assertSee('Ready to land your dream job in Switzerland?') // English CTA title
         ->assertSee('Switzerland\'s Job Search Support Service'); // English badge
 });
 
 it('displays content correctly in German locale', function (): void {
     app()->setLocale('de');
-    
+
     $response = get('/');
 
     $response
         ->assertOk()
         ->assertSee('Wir übernehmen die Verwaltung, Sie konzentrieren sich auf die Vorstellungsgespräche.') // German hero title
         ->assertSee('Dienstleistungen') // German navigation
-        ->assertSee('Preise') // German navigation  
+        ->assertSee('Preise') // German navigation
         ->assertSee('Über uns') // German navigation
         ->assertSee('Kostenlose Beratung') // German button
-        ->assertSee('Premium Job Zugang') // German service title
-        ->assertSee('Professionelle Dokumente') // German service title
-        ->assertSee('Diskrete Verwaltung') // German service title
+        ->assertSee('Premium Job Access') // Service titles are now in English
+        ->assertSee('Professional Documents')
+        ->assertSee('Complete Application Management')
+        ->assertSee('Active Job Search')
+        ->assertSee('Full-Service Support')
         ->assertSee('Bereit, Ihren Traumjob in der Schweiz zu finden?') // German CTA title
         ->assertSee('Schweizer Jobsuche-Support-Service'); // German badge
 });
@@ -106,7 +124,7 @@ it('switches language content correctly', function (): void {
     // Test English first
     app()->setLocale('en');
     $englishResponse = get('/');
-    
+
     $englishResponse
         ->assertOk()
         ->assertSee('We handle the admin, you focus on the interviews.')
@@ -115,7 +133,7 @@ it('switches language content correctly', function (): void {
     // Test German
     app()->setLocale('de');
     $germanResponse = get('/');
-    
+
     $germanResponse
         ->assertOk()
         ->assertSee('Wir übernehmen die Verwaltung')
@@ -126,7 +144,7 @@ it('displays correct pricing content in both languages', function (): void {
     // Test English pricing
     app()->setLocale('en');
     $englishResponse = get('/');
-    
+
     $englishResponse
         ->assertOk()
         ->assertSee('For self-applicants who want access to exclusive job opportunities') // JobRadar description
@@ -136,7 +154,7 @@ it('displays correct pricing content in both languages', function (): void {
     // Test German pricing
     app()->setLocale('de');
     $germanResponse = get('/');
-    
+
     $germanResponse
         ->assertOk()
         ->assertSee('Für Selbstbewerber, die Zugang zu exklusiven Stellenangeboten wollen') // JobRadar German description
@@ -148,40 +166,42 @@ it('maintains data consistency across locales', function (): void {
     // Test English data structure
     app()->setLocale('en');
     $englishResponse = get('/');
-    
+
     $englishResponse
         ->assertOk()
         ->assertViewHas('services', function (array $services): bool {
-            expect($services)->toHaveCount(3);
+            expect($services)->toHaveCount(5);
+
             return true;
         })
         ->assertViewHas('pricing_preview', function (array $pricing_preview): bool {
             expect($pricing_preview)->toHaveCount(5);
-            
+
             // Check that prices remain the same across languages
             $jobRadarPlan = collect($pricing_preview)->firstWhere('name', 'JobRadar');
             expect($jobRadarPlan['price'])->toBe('CHF 49');
-            
+
             return true;
         });
 
     // Test German data structure
     app()->setLocale('de');
     $germanResponse = get('/');
-    
+
     $germanResponse
         ->assertOk()
         ->assertViewHas('services', function (array $services): bool {
-            expect($services)->toHaveCount(3);
+            expect($services)->toHaveCount(5);
+
             return true;
         })
         ->assertViewHas('pricing_preview', function (array $pricing_preview): bool {
             expect($pricing_preview)->toHaveCount(5);
-            
+
             // Check that prices remain the same across languages
             $jobRadarPlan = collect($pricing_preview)->firstWhere('name', 'JobRadar');
             expect($jobRadarPlan['price'])->toBe('CHF 49');
-            
+
             return true;
         });
 });

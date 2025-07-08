@@ -127,7 +127,7 @@ it('contains all expected service data', function (): void {
 
             $expectedServices = [
                 'Premium Job Access',
-                'Professional Documents', 
+                'Professional Documents',
                 'Complete Application Management',
                 'Active Job Search',
                 'Full-Service Support',
