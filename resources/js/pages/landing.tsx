@@ -1,6 +1,8 @@
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
-import { Head } from '@inertiajs/react';
+import { Head, Link } from '@inertiajs/react';
+import { useTranslation } from '@/hooks/useTranslation';
+import LanguageSwitcher from '@/components/LanguageSwitcher';
 
 interface LandingProps {
     stats: {
@@ -25,6 +27,8 @@ interface LandingProps {
 }
 
 export default function Landing({ stats, services, pricing_preview }: LandingProps) {
+    const { t, getArray } = useTranslation();
+    
     return (
         <>
             <Head title="JobHunter - Swiss Job Search Support" />
@@ -34,15 +38,16 @@ export default function Landing({ stats, services, pricing_preview }: LandingPro
                 <nav className="absolute top-0 right-0 left-0 z-50 p-6">
                     <div className="mx-auto flex max-w-7xl items-center justify-between">
                         <div className="flex items-center space-x-8">
-                            <div className="text-xl font-bold text-white">JobHunter 🇨🇭</div>
-                            <button className="text-white transition-colors hover:text-gray-300">Services</button>
-                            <button className="text-white transition-colors hover:text-gray-300">Pricing</button>
-                            <button className="text-white transition-colors hover:text-gray-300">About</button>
+                            <Link href="/" className="text-xl font-bold text-white">JobHunter 🇨🇭</Link>
+                            <Link href="/services" className="text-white transition-colors hover:text-gray-300">{t('common.navigation.services')}</Link>
+                            <Link href="/pricing" className="text-white transition-colors hover:text-gray-300">{t('common.navigation.pricing')}</Link>
+                            <Link href="/about" className="text-white transition-colors hover:text-gray-300">{t('common.navigation.about')}</Link>
                         </div>
                         <div className="flex items-center space-x-4">
-                            <button className="text-white transition-colors hover:text-gray-300">Contact</button>
+                            <LanguageSwitcher />
+                            <button className="text-white transition-colors hover:text-gray-300">{t('common.navigation.contact')}</button>
                             <Button variant="outline" className="border-white text-white hover:bg-white hover:text-black">
-                                Free Consultation
+                                {t('common.buttons.free_consultation')}
                             </Button>
                         </div>
                     </div>
@@ -63,29 +68,30 @@ export default function Landing({ stats, services, pricing_preview }: LandingPro
                     <div className="relative z-10 mx-auto grid max-w-7xl grid-cols-1 items-center gap-12 px-6 lg:grid-cols-2">
                         <div className="text-white">
                             <div className="mb-4 inline-flex items-center rounded-full bg-white/20 px-4 py-2 text-sm backdrop-blur">
-                                🇨🇭 Switzerland's Job Search Support Service
+                                {t('landing.hero.switzerland_service')}
                             </div>
-                            <h1 className="mb-6 text-5xl leading-tight font-bold lg:text-6xl">We handle the admin, you focus on the interviews.</h1>
+                            <h1 className="mb-6 text-5xl leading-tight font-bold lg:text-6xl">{t('landing.hero.title')}</h1>
                             <p className="mb-8 max-w-lg text-xl text-gray-200">
-                                Professional job search support in Switzerland. We manage applications, craft documents, and find opportunities — all
-                                while staying completely invisible to employers.
+                                {t('landing.hero.subtitle')}
                             </p>
                             <div className="flex flex-col gap-4 sm:flex-row">
-                                <Button size="lg" className="bg-white text-blue-900 hover:bg-gray-100">
-                                    View Plans →
-                                </Button>
+                                <Link href="/pricing">
+                                    <Button size="lg" className="bg-white text-blue-900 hover:bg-gray-100">
+                                        {t('common.buttons.view_plans')} →
+                                    </Button>
+                                </Link>
                                 <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-blue-900">
-                                    Get Started
+                                    {t('common.buttons.get_started')}
                                 </Button>
                             </div>
-                            <p className="mt-4 text-sm text-gray-300">Starting from CHF 49/month • 100% discreet • Cancel anytime</p>
+                            <p className="mt-4 text-sm text-gray-300">{t('landing.hero.pricing_info')}</p>
                         </div>
 
                         <div className="flex justify-center lg:justify-end">
                             <div className="rounded-2xl bg-white/10 p-8 backdrop-blur">
                                 <div className="text-center">
                                     <div className="text-4xl font-bold text-white">100%</div>
-                                    <div className="text-sm text-gray-200">Discreet Service</div>
+                                    <div className="text-sm text-gray-200">{t('landing.hero.discreet_badge')}</div>
                                 </div>
                             </div>
                         </div>
@@ -97,25 +103,15 @@ export default function Landing({ stats, services, pricing_preview }: LandingPro
                     <div className="mx-auto max-w-7xl">
                         <div className="grid grid-cols-1 items-center gap-16 lg:grid-cols-2">
                             <div>
-                                <h2 className="mb-4 text-sm font-semibold tracking-wide text-blue-600">[How we work]</h2>
-                                <p className="text-lg leading-relaxed text-gray-800">
-                                    We are <strong>not</strong> a recruitment agency. We handle the administrative burden of your job search in
-                                    Switzerland — from finding opportunities to crafting applications — while remaining completely invisible to
-                                    employers.
-                                </p>
+                                <h2 className="mb-4 text-sm font-semibold tracking-wide text-blue-600">{t('landing.about.section_title')}</h2>
+                                <div className="text-lg leading-relaxed text-gray-800" dangerouslySetInnerHTML={{ __html: t('landing.about.description') }} />
                                 <div className="mt-6 space-y-4">
-                                    <div className="flex items-center space-x-3">
-                                        <div className="h-2 w-2 rounded-full bg-blue-600"></div>
-                                        <span className="text-gray-700">100% discreet service</span>
-                                    </div>
-                                    <div className="flex items-center space-x-3">
-                                        <div className="h-2 w-2 rounded-full bg-blue-600"></div>
-                                        <span className="text-gray-700">Professional recruiting tools</span>
-                                    </div>
-                                    <div className="flex items-center space-x-3">
-                                        <div className="h-2 w-2 rounded-full bg-blue-600"></div>
-                                        <span className="text-gray-700">Dedicated personal consultant</span>
-                                    </div>
+                                    {getArray('landing.about.features').map((feature: string, index: number) => (
+                                        <div key={index} className="flex items-center space-x-3">
+                                            <div className="h-2 w-2 rounded-full bg-blue-600"></div>
+                                            <span className="text-gray-700">{feature}</span>
+                                        </div>
+                                    ))}
                                 </div>
                             </div>
 
@@ -123,15 +119,15 @@ export default function Landing({ stats, services, pricing_preview }: LandingPro
                             <div className="grid grid-cols-3 gap-8">
                                 <div className="text-center">
                                     <div className="mb-2 text-4xl font-bold text-blue-900">{stats.plans}</div>
-                                    <div className="text-sm text-gray-600">Service Plans</div>
+                                    <div className="text-sm text-gray-600">{t('common.service_plans')}</div>
                                 </div>
                                 <div className="text-center">
                                     <div className="mb-2 text-3xl font-bold text-blue-900">{stats.monthly_price}</div>
-                                    <div className="text-sm text-gray-600">Monthly Pricing</div>
+                                    <div className="text-sm text-gray-600">{t('common.monthly_pricing')}</div>
                                 </div>
                                 <div className="text-center">
                                     <div className="mb-2 text-4xl font-bold text-blue-900">{stats.success_rate}</div>
-                                    <div className="text-sm text-gray-600">Discreet Service</div>
+                                    <div className="text-sm text-gray-600">{t('common.discreet_service')}</div>
                                 </div>
                             </div>
                         </div>
@@ -142,9 +138,9 @@ export default function Landing({ stats, services, pricing_preview }: LandingPro
                 <section className="bg-gray-50 px-6 py-20">
                     <div className="mx-auto max-w-7xl">
                         <div className="mb-16 text-center">
-                            <h2 className="mb-4 text-3xl font-bold text-gray-900">What makes us different</h2>
+                            <h2 className="mb-4 text-3xl font-bold text-gray-900">{t('landing.services.title')}</h2>
                             <p className="mx-auto max-w-2xl text-lg text-gray-600">
-                                We combine premium recruiting technology with human expertise to give you an unfair advantage in the Swiss job market.
+                                {t('landing.services.subtitle')}
                             </p>
                         </div>
 
@@ -162,9 +158,11 @@ export default function Landing({ stats, services, pricing_preview }: LandingPro
                                     <CardContent className="p-6">
                                         <h3 className="mb-3 text-xl font-semibold text-gray-900">{service.title}</h3>
                                         <p className="mb-4 leading-relaxed text-gray-600">{service.description}</p>
-                                        <Button variant="link" className="h-auto p-0 text-blue-600 hover:text-blue-800">
-                                            Learn More →
-                                        </Button>
+                                        <Link href="/services">
+                                            <Button variant="link" className="h-auto p-0 text-blue-600 hover:text-blue-800">
+                                                {t('common.buttons.learn_more')} →
+                                            </Button>
+                                        </Link>
                                     </CardContent>
                                 </Card>
                             ))}
@@ -176,8 +174,8 @@ export default function Landing({ stats, services, pricing_preview }: LandingPro
                 <section className="px-6 py-20">
                     <div className="mx-auto max-w-7xl">
                         <div className="mb-16 text-center">
-                            <h2 className="mb-4 text-3xl font-bold text-gray-900">Choose your plan</h2>
-                            <p className="text-lg text-gray-600">Transparent pricing with no hidden fees. Cancel anytime.</p>
+                            <h2 className="mb-4 text-3xl font-bold text-gray-900">{t('landing.pricing.title')}</h2>
+                            <p className="text-lg text-gray-600">{t('landing.pricing.subtitle')}</p>
                         </div>
 
                         <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
@@ -190,7 +188,7 @@ export default function Landing({ stats, services, pricing_preview }: LandingPro
                                 >
                                     {plan.popular && (
                                         <div className="absolute top-0 right-0 left-0 bg-blue-500 py-2 text-center text-sm font-semibold text-white">
-                                            Most Popular
+                                            {t('common.most_popular')}
                                         </div>
                                     )}
                                     <CardContent className={`p-6 ${plan.popular ? 'pt-12' : ''}`}>
@@ -199,7 +197,7 @@ export default function Landing({ stats, services, pricing_preview }: LandingPro
                                             <h3 className="mb-2 text-lg font-semibold text-gray-900">{plan.name}</h3>
                                             <div className="mb-4">
                                                 <span className="text-2xl font-bold text-blue-900">{plan.price}</span>
-                                                <span className="text-gray-600 text-sm">/month</span>
+                                                <span className="text-gray-600 text-sm">{t('common.per_month')}</span>
                                             </div>
                                             <p className="mb-4 text-sm text-gray-600 leading-relaxed">{plan.description}</p>
                                             
@@ -221,7 +219,7 @@ export default function Landing({ stats, services, pricing_preview }: LandingPro
                                                         : 'bg-gray-100 text-gray-900 hover:bg-gray-200'
                                                 }`}
                                             >
-                                                {plan.popular ? 'Get Started' : 'Learn More'}
+                                                {plan.popular ? t('common.buttons.get_started') : t('common.buttons.learn_more')}
                                             </Button>
                                         </div>
                                     </CardContent>
@@ -230,9 +228,11 @@ export default function Landing({ stats, services, pricing_preview }: LandingPro
                         </div>
 
                         <div className="mt-12 text-center">
-                            <Button variant="outline" size="lg" className="border-blue-600 text-blue-600 hover:bg-blue-50">
-                                View All Plans & Features →
-                            </Button>
+                            <Link href="/pricing">
+                                <Button variant="outline" size="lg" className="border-blue-600 text-blue-600 hover:bg-blue-50">
+                                    {t('common.buttons.view_all_plans')} →
+                                </Button>
+                            </Link>
                         </div>
                     </div>
                 </section>
@@ -249,19 +249,21 @@ export default function Landing({ stats, services, pricing_preview }: LandingPro
                     </div>
                     <div className="relative px-6 py-20">
                         <div className="mx-auto max-w-4xl text-center">
-                            <h2 className="mb-6 text-4xl font-bold">Ready to land your dream job in Switzerland?</h2>
+                            <h2 className="mb-6 text-4xl font-bold">{t('landing.cta.title')}</h2>
                             <p className="mb-8 text-xl text-gray-200">
-                                Join hundreds of professionals who trust us with their job search. Get started with a free consultation call.
+                                {t('landing.cta.subtitle')}
                             </p>
                             <div className="flex flex-col gap-4 sm:flex-row sm:justify-center">
                                 <Button size="lg" className="bg-white text-blue-900 hover:bg-gray-100">
-                                    Book Free Consultation
+                                    {t('common.buttons.book_consultation')}
                                 </Button>
-                                <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-blue-900">
-                                    View All Plans
-                                </Button>
+                                <Link href="/pricing">
+                                    <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-blue-900">
+                                        {t('common.buttons.view_all_plans')}
+                                    </Button>
+                                </Link>
                             </div>
-                            <p className="mt-6 text-sm text-gray-300">🇨🇭 Specialized in the Swiss job market • No commitment required</p>
+                            <p className="mt-6 text-sm text-gray-300">{t('landing.cta.footer_text')}</p>
                         </div>
                     </div>
                 </section>
