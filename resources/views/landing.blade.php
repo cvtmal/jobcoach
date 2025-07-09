@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>JobHunter - Swiss Job Search Support</title>
+        <title>{{ __('common.app_title', ['app' => 'JobHunter']) }}</title>
 
         <link rel="icon" href="/favicon.ico" sizes="any">
         <link rel="icon" href="/favicon.svg" type="image/svg+xml">
@@ -193,13 +193,13 @@
             <section id="services-detail" class="bg-gradient-to-r from-blue-900 to-blue-700 text-white py-20">
                 <div class="mx-auto max-w-7xl px-6 text-center">
                     <h1 class="text-4xl lg:text-5xl font-bold mb-6">
-                        Professional Job Search Services
+                        {{ __('landing.detailed_services.title') }}
                     </h1>
                     <p class="text-xl text-blue-100 max-w-3xl mx-auto mb-8">
-                        We combine premium recruiting technology with human expertise to give you an unfair advantage in the Swiss job market.
+                        {{ __('landing.detailed_services.subtitle') }}
                     </p>
                     <div class="inline-flex items-center px-4 py-2 bg-white/20 rounded-full text-sm backdrop-blur">
-                        🇨🇭 Specialized in the Swiss job market
+                        {{ __('landing.detailed_services.swiss_market_badge') }}
                     </div>
                 </div>
             </section>
@@ -228,7 +228,7 @@
                                     <p class="mb-6 text-gray-600 leading-relaxed">{{ $service['description'] }}</p>
                                     
                                     <div class="mb-6">
-                                        <h4 class="text-sm font-semibold text-gray-900 mb-3 uppercase tracking-wide">What's included:</h4>
+                                        <h4 class="text-sm font-semibold text-gray-900 mb-3 uppercase tracking-wide">{{ __('landing.detailed_services.whats_included') }}</h4>
                                         <ul class="space-y-2">
                                             @foreach($service['details'] as $detail)
                                                 <li class="flex items-start text-sm text-gray-600">
@@ -240,7 +240,7 @@
                                     </div>
                                     
                                     <button class="w-full bg-blue-600 text-white hover:bg-blue-700 inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-10 px-4 py-2">
-                                        Learn More
+                                        {{ __('landing.detailed_services.learn_more_button') }}
                                     </button>
                                 </div>
                             </div>
@@ -253,27 +253,27 @@
             <section class="bg-gray-50 py-20">
                 <div class="mx-auto max-w-7xl px-6">
                     <div class="text-center mb-16">
-                        <h2 class="text-3xl font-bold text-gray-900 mb-4">How It Works</h2>
+                        <h2 class="text-3xl font-bold text-gray-900 mb-4">{{ __('landing.how_it_works.title') }}</h2>
                         <p class="text-lg text-gray-600 max-w-2xl mx-auto">
-                            Our process is designed to be completely transparent and stress-free for you.
+                            {{ __('landing.how_it_works.subtitle') }}
                         </p>
                     </div>
 
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                         <div class="text-center">
                             <div class="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center text-white text-2xl font-bold mx-auto mb-4">1</div>
-                            <h3 class="text-xl font-semibold text-gray-900 mb-2">Consultation Call</h3>
-                            <p class="text-gray-600">We discuss your goals, experience, and preferences in a 30-minute call.</p>
+                            <h3 class="text-xl font-semibold text-gray-900 mb-2">{{ __('landing.how_it_works.consultation_call') }}</h3>
+                            <p class="text-gray-600">{{ __('landing.how_it_works.consultation_description') }}</p>
                         </div>
                         <div class="text-center">
                             <div class="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center text-white text-2xl font-bold mx-auto mb-4">2</div>
-                            <h3 class="text-xl font-semibold text-gray-900 mb-2">We Take Action</h3>
-                            <p class="text-gray-600">Our team finds opportunities, creates documents, and manages applications.</p>
+                            <h3 class="text-xl font-semibold text-gray-900 mb-2">{{ __('landing.how_it_works.we_take_action') }}</h3>
+                            <p class="text-gray-600">{{ __('landing.how_it_works.we_take_action_description') }}</p>
                         </div>
                         <div class="text-center">
                             <div class="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center text-white text-2xl font-bold mx-auto mb-4">3</div>
-                            <h3 class="text-xl font-semibold text-gray-900 mb-2">You Interview</h3>
-                            <p class="text-gray-600">Focus on what matters most - preparing for and attending interviews.</p>
+                            <h3 class="text-xl font-semibold text-gray-900 mb-2">{{ __('landing.how_it_works.you_interview') }}</h3>
+                            <p class="text-gray-600">{{ __('landing.how_it_works.you_interview_description') }}</p>
                         </div>
                     </div>
                 </div>
@@ -283,13 +283,13 @@
             <section id="pricing" class="bg-gradient-to-r from-blue-900 to-blue-700 text-white py-20">
                 <div class="mx-auto max-w-7xl px-6 text-center">
                     <h1 class="text-4xl lg:text-5xl font-bold mb-6">
-                        Transparent Pricing
+                        {{ __('landing.detailed_pricing.title') }}
                     </h1>
                     <p class="text-xl text-blue-100 max-w-3xl mx-auto mb-8">
-                        Choose the plan that fits your needs. All plans include our 100% discreet service and can be cancelled anytime.
+                        {{ __('landing.detailed_pricing.subtitle') }}
                     </p>
                     <div class="inline-flex items-center px-4 py-2 bg-white/20 rounded-full text-sm backdrop-blur">
-                        🇨🇭 CHF 49-399/month • No hidden fees • Cancel anytime
+                        {{ __('landing.detailed_pricing.pricing_badge') }}
                     </div>
                 </div>
             </section>
@@ -298,8 +298,8 @@
             <section class="py-20">
                 <div class="mx-auto max-w-7xl px-6">
                     <div class="text-center mb-16">
-                        <h2 class="text-3xl font-bold text-gray-900 mb-4">Monthly Subscription Plans</h2>
-                        <p class="text-lg text-gray-600">All plans include personal onboarding call and dedicated consultant</p>
+                        <h2 class="text-3xl font-bold text-gray-900 mb-4">{{ __('landing.detailed_pricing.monthly_plans_title') }}</h2>
+                        <p class="text-lg text-gray-600">{{ __('landing.detailed_pricing.monthly_plans_subtitle') }}</p>
                     </div>
 
                     <div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
@@ -307,7 +307,7 @@
                             <div class="rounded-lg border bg-card text-card-foreground shadow-sm relative overflow-hidden transition-all hover:shadow-xl {{ $plan['popular'] ? 'scale-105 border-2 border-blue-500 shadow-lg' : 'border border-gray-200' }}">
                                 @if($plan['popular'])
                                     <div class="absolute top-0 right-0 left-0 bg-blue-500 py-2 text-center text-sm font-semibold text-white">
-                                        Most Popular
+                                        {{ __('landing.detailed_pricing.most_popular') }}
                                     </div>
                                 @endif
                                 <div class="p-8 {{ $plan['popular'] ? 'pt-12' : '' }}">
@@ -316,12 +316,12 @@
                                         <h3 class="text-2xl font-bold text-gray-900 mb-2">{{ $plan['name'] }}</h3>
                                         <div class="mb-6">
                                             <span class="text-4xl font-bold text-blue-900">{{ $plan['price'] }}</span>
-                                            <span class="text-gray-600 text-lg">/month</span>
+                                            <span class="text-gray-600 text-lg">{{ __('landing.detailed_pricing.per_month') }}</span>
                                         </div>
                                         <p class="text-gray-600 mb-8 leading-relaxed">{{ $plan['description'] }}</p>
                                         
                                         <div class="mb-8 text-left">
-                                            <h4 class="text-sm font-semibold text-gray-900 mb-4 uppercase tracking-wide">Includes:</h4>
+                                            <h4 class="text-sm font-semibold text-gray-900 mb-4 uppercase tracking-wide">{{ __('landing.detailed_pricing.includes') }}</h4>
                                             <ul class="space-y-3">
                                                 @foreach($plan['features'] as $feature)
                                                     <li class="flex items-start text-sm text-gray-600">
@@ -333,7 +333,7 @@
                                         </div>
                                         
                                         <button class="w-full text-lg py-3 inline-flex items-center justify-center whitespace-nowrap rounded-md font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-10 px-4 {{ $plan['popular'] ? 'bg-blue-600 text-white hover:bg-blue-700' : 'bg-gray-100 text-gray-900 hover:bg-gray-200' }}">
-                                            {{ $plan['popular'] ? 'Get Started' : 'Choose Plan' }}
+                                            {{ $plan['popular'] ? __('landing.detailed_pricing.get_started') : __('landing.detailed_pricing.choose_plan') }}
                                         </button>
                                     </div>
                                 </div>
@@ -347,25 +347,25 @@
             <section class="bg-blue-50 py-16">
                 <div class="mx-auto max-w-7xl px-6">
                     <div class="text-center mb-12">
-                        <h2 class="text-2xl font-bold text-gray-900 mb-4">🔐 Important Information</h2>
-                        <p class="text-gray-600">Applies to all plans</p>
+                        <h2 class="text-2xl font-bold text-gray-900 mb-4">{{ __('landing.important_info.title') }}</h2>
+                        <p class="text-gray-600">{{ __('landing.important_info.subtitle') }}</p>
                     </div>
 
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                         <div class="bg-white p-6 rounded-lg shadow-sm">
                             <div class="text-2xl mb-4">🚫</div>
-                            <h3 class="text-lg font-semibold text-gray-900 mb-2">Not a recruitment agency</h3>
-                            <p class="text-gray-600 text-sm">We solely handle the administrative work of your job search – job research, application document creation, submission, and follow-ups.</p>
+                            <h3 class="text-lg font-semibold text-gray-900 mb-2">{{ __('landing.important_info.not_recruitment_title') }}</h3>
+                            <p class="text-gray-600 text-sm">{{ __('landing.important_info.not_recruitment_description') }}</p>
                         </div>
                         <div class="bg-white p-6 rounded-lg shadow-sm">
                             <div class="text-2xl mb-4">👤</div>
-                            <h3 class="text-lg font-semibold text-gray-900 mb-2">100% Discreet</h3>
-                            <p class="text-gray-600 text-sm">You remain the visible applicant. We act in your name but are never visible to employers. All applications are sent as if you wrote them yourself.</p>
+                            <h3 class="text-lg font-semibold text-gray-900 mb-2">{{ __('landing.important_info.discreet_title') }}</h3>
+                            <p class="text-gray-600 text-sm">{{ __('landing.important_info.discreet_description') }}</p>
                         </div>
                         <div class="bg-white p-6 rounded-lg shadow-sm">
                             <div class="text-2xl mb-4">🛠️</div>
-                            <h3 class="text-lg font-semibold text-gray-900 mb-2">Premium Tools</h3>
-                            <p class="text-gray-600 text-sm">We use advanced recruiting software (normally unavailable to individuals) combined with manual search by our team.</p>
+                            <h3 class="text-lg font-semibold text-gray-900 mb-2">{{ __('landing.important_info.premium_tools_title') }}</h3>
+                            <p class="text-gray-600 text-sm">{{ __('landing.important_info.premium_tools_description') }}</p>
                         </div>
                     </div>
                 </div>
@@ -375,8 +375,8 @@
             <section class="py-20">
                 <div class="mx-auto max-w-7xl px-6">
                     <div class="text-center mb-16">
-                        <h2 class="text-3xl font-bold text-gray-900 mb-4">Add-On Services</h2>
-                        <p class="text-lg text-gray-600">Additional services available for any plan</p>
+                        <h2 class="text-3xl font-bold text-gray-900 mb-4">{{ __('landing.addons.title') }}</h2>
+                        <p class="text-lg text-gray-600">{{ __('landing.addons.subtitle') }}</p>
                     </div>
 
                     <div class="max-w-4xl mx-auto">
@@ -385,17 +385,35 @@
                                 <table class="w-full">
                                     <thead class="bg-gray-50">
                                         <tr>
-                                            <th class="px-6 py-4 text-left text-sm font-semibold text-gray-900">Service</th>
-                                            <th class="px-6 py-4 text-right text-sm font-semibold text-gray-900">Price (CHF)</th>
+                                            <th class="px-6 py-4 text-left text-sm font-semibold text-gray-900">{{ __('landing.addons.service_header') }}</th>
+                                            <th class="px-6 py-4 text-right text-sm font-semibold text-gray-900">{{ __('landing.addons.price_header') }}</th>
                                         </tr>
                                     </thead>
                                     <tbody class="divide-y divide-gray-200">
-                                        @foreach($addOns as $addOn)
-                                            <tr class="hover:bg-gray-50">
-                                                <td class="px-6 py-4 text-sm text-gray-900">{{ $addOn['service'] }}</td>
-                                                <td class="px-6 py-4 text-sm text-gray-900 text-right font-semibold">{{ $addOn['price'] }}</td>
-                                            </tr>
-                                        @endforeach
+                                        <tr class="hover:bg-gray-50">
+                                            <td class="px-6 py-4 text-sm text-gray-900">{{ __('landing.addons.interview_coaching') }}</td>
+                                            <td class="px-6 py-4 text-sm text-gray-900 text-right font-semibold">120.–</td>
+                                        </tr>
+                                        <tr class="hover:bg-gray-50">
+                                            <td class="px-6 py-4 text-sm text-gray-900">{{ __('landing.addons.express_application') }}</td>
+                                            <td class="px-6 py-4 text-sm text-gray-900 text-right font-semibold">59.– {{ __('landing.addons.per_application') }}</td>
+                                        </tr>
+                                        <tr class="hover:bg-gray-50">
+                                            <td class="px-6 py-4 text-sm text-gray-900">{{ __('landing.addons.cv_review') }}</td>
+                                            <td class="px-6 py-4 text-sm text-gray-900 text-right font-semibold">49.–</td>
+                                        </tr>
+                                        <tr class="hover:bg-gray-50">
+                                            <td class="px-6 py-4 text-sm text-gray-900">{{ __('landing.addons.linkedin_optimization') }}</td>
+                                            <td class="px-6 py-4 text-sm text-gray-900 text-right font-semibold">89.–</td>
+                                        </tr>
+                                        <tr class="hover:bg-gray-50">
+                                            <td class="px-6 py-4 text-sm text-gray-900">{{ __('landing.addons.reference_check') }}</td>
+                                            <td class="px-6 py-4 text-sm text-gray-900 text-right font-semibold">59.–</td>
+                                        </tr>
+                                        <tr class="hover:bg-gray-50">
+                                            <td class="px-6 py-4 text-sm text-gray-900">{{ __('landing.addons.personal_coaching') }}</td>
+                                            <td class="px-6 py-4 text-sm text-gray-900 text-right font-semibold">120.– {{ __('landing.addons.per_hour') }}</td>
+                                        </tr>
                                     </tbody>
                                 </table>
                             </div>
@@ -408,22 +426,22 @@
             <section class="bg-gray-50 py-20">
                 <div class="mx-auto max-w-4xl px-6">
                     <div class="text-center mb-16">
-                        <h2 class="text-3xl font-bold text-gray-900 mb-4">Frequently Asked Questions</h2>
-                        <p class="text-lg text-gray-600">Everything you need to know about our pricing</p>
+                        <h2 class="text-3xl font-bold text-gray-900 mb-4">{{ __('landing.faq.title') }}</h2>
+                        <p class="text-lg text-gray-600">{{ __('landing.faq.subtitle') }}</p>
                     </div>
 
                     <div class="space-y-8">
                         <div class="bg-white p-8 rounded-lg shadow-sm">
-                            <h3 class="text-lg font-semibold text-gray-900 mb-3">Can I cancel anytime?</h3>
-                            <p class="text-gray-600">Yes, all subscriptions can be cancelled at any time with no penalties or fees.</p>
+                            <h3 class="text-lg font-semibold text-gray-900 mb-3">{{ __('landing.faq.cancel_anytime_q') }}</h3>
+                            <p class="text-gray-600">{{ __('landing.faq.cancel_anytime_a') }}</p>
                         </div>
                         <div class="bg-white p-8 rounded-lg shadow-sm">
-                            <h3 class="text-lg font-semibold text-gray-900 mb-3">Will employers know you're helping me?</h3>
-                            <p class="text-gray-600">No, we are completely invisible to employers. All applications are sent as if you wrote them yourself.</p>
+                            <h3 class="text-lg font-semibold text-gray-900 mb-3">{{ __('landing.faq.employers_know_q') }}</h3>
+                            <p class="text-gray-600">{{ __('landing.faq.employers_know_a') }}</p>
                         </div>
                         <div class="bg-white p-8 rounded-lg shadow-sm">
-                            <h3 class="text-lg font-semibold text-gray-900 mb-3">Are there any hidden fees?</h3>
-                            <p class="text-gray-600">No, our pricing is completely transparent. The only additional costs are optional add-on services.</p>
+                            <h3 class="text-lg font-semibold text-gray-900 mb-3">{{ __('landing.faq.hidden_fees_q') }}</h3>
+                            <p class="text-gray-600">{{ __('landing.faq.hidden_fees_a') }}</p>
                         </div>
                     </div>
                 </div>
@@ -433,13 +451,13 @@
             <section id="about" class="bg-gradient-to-r from-blue-900 to-blue-700 text-white py-20">
                 <div class="mx-auto max-w-7xl px-6 text-center">
                     <h1 class="text-4xl lg:text-5xl font-bold mb-6">
-                        About JobHunter
+                        {{ __('landing.about_detailed.title') }}
                     </h1>
                     <p class="text-xl text-blue-100 max-w-3xl mx-auto mb-8">
-                        We're Switzerland's leading job search support service, helping professionals focus on what matters most - landing their dream job.
+                        {{ __('landing.about_detailed.subtitle') }}
                     </p>
                     <div class="inline-flex items-center px-4 py-2 bg-white/20 rounded-full text-sm backdrop-blur">
-                        🇨🇭 Founded in Switzerland • Serving professionals nationwide
+                        {{ __('landing.about_detailed.founded_badge') }}
                     </div>
                 </div>
             </section>
@@ -449,25 +467,25 @@
                 <div class="mx-auto max-w-7xl px-6">
                     <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
                         <div>
-                            <h2 class="text-3xl font-bold text-gray-900 mb-6">Our Mission</h2>
+                            <h2 class="text-3xl font-bold text-gray-900 mb-6">{{ __('landing.about_detailed.mission_title') }}</h2>
                             <p class="text-lg text-gray-600 mb-6 leading-relaxed">
-                                We believe that every professional deserves to focus on their strengths rather than getting bogged down by the administrative burden of job searching. Our mission is to handle the complex, time-consuming tasks of finding opportunities and crafting applications, so you can concentrate on what you do best.
+                                {{ __('landing.about_detailed.mission_text_1') }}
                             </p>
                             <p class="text-lg text-gray-600 mb-8 leading-relaxed">
-                                We're not a recruitment agency - we're your personal job search team, working behind the scenes to give you an unfair advantage in the Swiss job market.
+                                {{ __('landing.about_detailed.mission_text_2') }}
                             </p>
                             <div class="space-y-4">
                                 <div class="flex items-center space-x-3">
                                     <div class="w-2 h-2 bg-blue-600 rounded-full"></div>
-                                    <span class="text-gray-700 font-medium">100% transparent process</span>
+                                    <span class="text-gray-700 font-medium">{{ __('landing.about_detailed.mission_feature_1') }}</span>
                                 </div>
                                 <div class="flex items-center space-x-3">
                                     <div class="w-2 h-2 bg-blue-600 rounded-full"></div>
-                                    <span class="text-gray-700 font-medium">Completely invisible to employers</span>
+                                    <span class="text-gray-700 font-medium">{{ __('landing.about_detailed.mission_feature_2') }}</span>
                                 </div>
                                 <div class="flex items-center space-x-3">
                                     <div class="w-2 h-2 bg-blue-600 rounded-full"></div>
-                                    <span class="text-gray-700 font-medium">Specialized in Swiss job market</span>
+                                    <span class="text-gray-700 font-medium">{{ __('landing.about_detailed.mission_feature_3') }}</span>
                                 </div>
                             </div>
                         </div>
@@ -486,9 +504,9 @@
             <section class="bg-gray-50 py-20">
                 <div class="mx-auto max-w-7xl px-6">
                     <div class="text-center mb-16">
-                        <h2 class="text-3xl font-bold text-gray-900 mb-4">How We're Different</h2>
+                        <h2 class="text-3xl font-bold text-gray-900 mb-4">{{ __('landing.about_detailed.different_title') }}</h2>
                         <p class="text-lg text-gray-600 max-w-2xl mx-auto">
-                            We're not like other job search services. Here's what makes us unique.
+                            {{ __('landing.about_detailed.different_subtitle') }}
                         </p>
                     </div>
 
@@ -496,9 +514,9 @@
                         <div class="rounded-lg border bg-card text-card-foreground shadow-sm border-0 shadow-lg">
                             <div class="p-8 text-center">
                                 <div class="text-4xl mb-4">🎯</div>
-                                <h3 class="text-xl font-semibold text-gray-900 mb-4">Swiss Market Expertise</h3>
+                                <h3 class="text-xl font-semibold text-gray-900 mb-4">{{ __('landing.about_detailed.swiss_expertise_title') }}</h3>
                                 <p class="text-gray-600 leading-relaxed">
-                                    We understand the unique requirements, cultural nuances, and application processes specific to the Swiss job market.
+                                    {{ __('landing.about_detailed.swiss_expertise_description') }}
                                 </p>
                             </div>
                         </div>
@@ -506,9 +524,9 @@
                         <div class="rounded-lg border bg-card text-card-foreground shadow-sm border-0 shadow-lg">
                             <div class="p-8 text-center">
                                 <div class="text-4xl mb-4">🔧</div>
-                                <h3 class="text-xl font-semibold text-gray-900 mb-4">Premium Tools</h3>
+                                <h3 class="text-xl font-semibold text-gray-900 mb-4">{{ __('landing.about_detailed.premium_tools_title') }}</h3>
                                 <p class="text-gray-600 leading-relaxed">
-                                    We use advanced recruiting software and databases that are typically only available to professional recruiters.
+                                    {{ __('landing.about_detailed.premium_tools_description') }}
                                 </p>
                             </div>
                         </div>
@@ -516,9 +534,9 @@
                         <div class="rounded-lg border bg-card text-card-foreground shadow-sm border-0 shadow-lg">
                             <div class="p-8 text-center">
                                 <div class="text-4xl mb-4">👤</div>
-                                <h3 class="text-xl font-semibold text-gray-900 mb-4">Complete Discretion</h3>
+                                <h3 class="text-xl font-semibold text-gray-900 mb-4">{{ __('landing.about_detailed.complete_discretion_title') }}</h3>
                                 <p class="text-gray-600 leading-relaxed">
-                                    Employers never know we're involved. All applications appear to come directly from you, maintaining your personal brand.
+                                    {{ __('landing.about_detailed.complete_discretion_description') }}
                                 </p>
                             </div>
                         </div>
@@ -526,9 +544,9 @@
                         <div class="rounded-lg border bg-card text-card-foreground shadow-sm border-0 shadow-lg">
                             <div class="p-8 text-center">
                                 <div class="text-4xl mb-4">🤝</div>
-                                <h3 class="text-xl font-semibold text-gray-900 mb-4">Personal Touch</h3>
+                                <h3 class="text-xl font-semibold text-gray-900 mb-4">{{ __('landing.about_detailed.personal_touch_title') }}</h3>
                                 <p class="text-gray-600 leading-relaxed">
-                                    Every client gets a dedicated consultant who understands their goals and manages their entire process.
+                                    {{ __('landing.about_detailed.personal_touch_description') }}
                                 </p>
                             </div>
                         </div>
@@ -536,9 +554,9 @@
                         <div class="rounded-lg border bg-card text-card-foreground shadow-sm border-0 shadow-lg">
                             <div class="p-8 text-center">
                                 <div class="text-4xl mb-4">📊</div>
-                                <h3 class="text-xl font-semibold text-gray-900 mb-4">Data-Driven</h3>
+                                <h3 class="text-xl font-semibold text-gray-900 mb-4">{{ __('landing.about_detailed.data_driven_title') }}</h3>
                                 <p class="text-gray-600 leading-relaxed">
-                                    We track application success rates and continuously optimize our approach based on real market data.
+                                    {{ __('landing.about_detailed.data_driven_description') }}
                                 </p>
                             </div>
                         </div>
@@ -546,9 +564,9 @@
                         <div class="rounded-lg border bg-card text-card-foreground shadow-sm border-0 shadow-lg">
                             <div class="p-8 text-center">
                                 <div class="text-4xl mb-4">⚡</div>
-                                <h3 class="text-xl font-semibold text-gray-900 mb-4">Fast Response</h3>
+                                <h3 class="text-xl font-semibold text-gray-900 mb-4">{{ __('landing.about_detailed.fast_response_title') }}</h3>
                                 <p class="text-gray-600 leading-relaxed">
-                                    We act quickly on new opportunities and maintain responsive communication throughout the process.
+                                    {{ __('landing.about_detailed.fast_response_description') }}
                                 </p>
                             </div>
                         </div>
@@ -560,35 +578,35 @@
             <section class="py-20">
                 <div class="mx-auto max-w-7xl px-6">
                     <div class="text-center mb-16">
-                        <h2 class="text-3xl font-bold text-gray-900 mb-4">Our Process</h2>
+                        <h2 class="text-3xl font-bold text-gray-900 mb-4">{{ __('landing.about_detailed.process_title') }}</h2>
                         <p class="text-lg text-gray-600 max-w-2xl mx-auto">
-                            A transparent, step-by-step approach designed to get you results.
+                            {{ __('landing.about_detailed.process_subtitle') }}
                         </p>
                     </div>
 
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                         <div class="text-center">
                             <div class="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center text-white text-2xl font-bold mx-auto mb-4">1</div>
-                            <h3 class="text-xl font-semibold text-gray-900 mb-4">Discovery Call</h3>
-                            <p class="text-gray-600">We learn about your background, goals, and preferences in a detailed consultation.</p>
+                            <h3 class="text-xl font-semibold text-gray-900 mb-4">{{ __('landing.about_detailed.discovery_call') }}</h3>
+                            <p class="text-gray-600">{{ __('landing.about_detailed.discovery_call_description') }}</p>
                         </div>
                         
                         <div class="text-center">
                             <div class="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center text-white text-2xl font-bold mx-auto mb-4">2</div>
-                            <h3 class="text-xl font-semibold text-gray-900 mb-4">Market Research</h3>
-                            <p class="text-gray-600">We identify opportunities using premium tools and our extensive network.</p>
+                            <h3 class="text-xl font-semibold text-gray-900 mb-4">{{ __('landing.about_detailed.market_research') }}</h3>
+                            <p class="text-gray-600">{{ __('landing.about_detailed.market_research_description') }}</p>
                         </div>
                         
                         <div class="text-center">
                             <div class="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center text-white text-2xl font-bold mx-auto mb-4">3</div>
-                            <h3 class="text-xl font-semibold text-gray-900 mb-4">Application Creation</h3>
-                            <p class="text-gray-600">We craft tailored applications that highlight your unique value proposition.</p>
+                            <h3 class="text-xl font-semibold text-gray-900 mb-4">{{ __('landing.about_detailed.application_creation') }}</h3>
+                            <p class="text-gray-600">{{ __('landing.about_detailed.application_creation_description') }}</p>
                         </div>
                         
                         <div class="text-center">
                             <div class="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center text-white text-2xl font-bold mx-auto mb-4">4</div>
-                            <h3 class="text-xl font-semibold text-gray-900 mb-4">Interview Support</h3>
-                            <p class="text-gray-600">We prepare you for success and provide ongoing support throughout the process.</p>
+                            <h3 class="text-xl font-semibold text-gray-900 mb-4">{{ __('landing.about_detailed.interview_support') }}</h3>
+                            <p class="text-gray-600">{{ __('landing.about_detailed.interview_support_description') }}</p>
                         </div>
                     </div>
                 </div>
@@ -598,22 +616,22 @@
             <section class="bg-blue-50 py-20">
                 <div class="mx-auto max-w-7xl px-6">
                     <div class="text-center mb-16">
-                        <h2 class="text-3xl font-bold text-gray-900 mb-4">Our Track Record</h2>
-                        <p class="text-lg text-gray-600">Numbers that speak for themselves</p>
+                        <h2 class="text-3xl font-bold text-gray-900 mb-4">{{ __('landing.about_detailed.track_record_title') }}</h2>
+                        <p class="text-lg text-gray-600">{{ __('landing.about_detailed.track_record_subtitle') }}</p>
                     </div>
 
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                         <div class="text-center bg-white p-8 rounded-lg shadow-sm">
                             <div class="text-4xl font-bold text-blue-900 mb-2">500+</div>
-                            <div class="text-gray-600">Successful Placements</div>
+                            <div class="text-gray-600">{{ __('landing.about_detailed.successful_placements') }}</div>
                         </div>
                         <div class="text-center bg-white p-8 rounded-lg shadow-sm">
                             <div class="text-4xl font-bold text-blue-900 mb-2">100%</div>
-                            <div class="text-gray-600">Discreet Service</div>
+                            <div class="text-gray-600">{{ __('landing.about_detailed.discreet_service') }}</div>
                         </div>
                         <div class="text-center bg-white p-8 rounded-lg shadow-sm">
                             <div class="text-4xl font-bold text-blue-900 mb-2">24h</div>
-                            <div class="text-gray-600">Average Response Time</div>
+                            <div class="text-gray-600">{{ __('landing.about_detailed.response_time') }}</div>
                         </div>
                     </div>
                 </div>
@@ -623,9 +641,9 @@
             <section class="py-20">
                 <div class="mx-auto max-w-7xl px-6">
                     <div class="text-center mb-16">
-                        <h2 class="text-3xl font-bold text-gray-900 mb-4">Our Values</h2>
+                        <h2 class="text-3xl font-bold text-gray-900 mb-4">{{ __('landing.about_detailed.values_title') }}</h2>
                         <p class="text-lg text-gray-600 max-w-2xl mx-auto">
-                            The principles that guide everything we do.
+                            {{ __('landing.about_detailed.values_subtitle') }}
                         </p>
                     </div>
 
@@ -635,8 +653,8 @@
                                 <span class="text-blue-600 text-xl">🔒</span>
                             </div>
                             <div>
-                                <h3 class="text-xl font-semibold text-gray-900 mb-2">Confidentiality</h3>
-                                <p class="text-gray-600">Your privacy is paramount. We never reveal our involvement to employers or compromise your personal brand.</p>
+                                <h3 class="text-xl font-semibold text-gray-900 mb-2">{{ __('landing.about_detailed.confidentiality_title') }}</h3>
+                                <p class="text-gray-600">{{ __('landing.about_detailed.confidentiality_description') }}</p>
                             </div>
                         </div>
                         
@@ -645,8 +663,8 @@
                                 <span class="text-blue-600 text-xl">🎯</span>
                             </div>
                             <div>
-                                <h3 class="text-xl font-semibold text-gray-900 mb-2">Excellence</h3>
-                                <p class="text-gray-600">We maintain the highest standards in everything we do, from document creation to client communication.</p>
+                                <h3 class="text-xl font-semibold text-gray-900 mb-2">{{ __('landing.about_detailed.excellence_title') }}</h3>
+                                <p class="text-gray-600">{{ __('landing.about_detailed.excellence_description') }}</p>
                             </div>
                         </div>
                         
@@ -655,8 +673,8 @@
                                 <span class="text-blue-600 text-xl">🤝</span>
                             </div>
                             <div>
-                                <h3 class="text-xl font-semibold text-gray-900 mb-2">Partnership</h3>
-                                <p class="text-gray-600">We see ourselves as your partner in success, not just a service provider. Your goals become our goals.</p>
+                                <h3 class="text-xl font-semibold text-gray-900 mb-2">{{ __('landing.about_detailed.partnership_title') }}</h3>
+                                <p class="text-gray-600">{{ __('landing.about_detailed.partnership_description') }}</p>
                             </div>
                         </div>
                         
@@ -665,8 +683,8 @@
                                 <span class="text-blue-600 text-xl">📈</span>
                             </div>
                             <div>
-                                <h3 class="text-xl font-semibold text-gray-900 mb-2">Results</h3>
-                                <p class="text-gray-600">We're committed to delivering measurable results and continuously improving our approach.</p>
+                                <h3 class="text-xl font-semibold text-gray-900 mb-2">{{ __('landing.about_detailed.results_title') }}</h3>
+                                <p class="text-gray-600">{{ __('landing.about_detailed.results_description') }}</p>
                             </div>
                         </div>
                     </div>

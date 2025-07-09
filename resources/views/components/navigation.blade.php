@@ -85,8 +85,8 @@
                 <div class="mt-12 flex flex-col items-end space-y-8">
                     {{-- Language Switcher --}}
                     <div class="flex items-center space-x-6 px-4">
-                        <button @click="open = false" class="text-xl text-white hover:text-gray-300 transition-colors {{ app()->getLocale() === 'de' ? 'font-semibold' : '' }}">DE</button>
-                        <button @click="open = false" class="text-xl text-white hover:text-gray-300 transition-colors {{ app()->getLocale() === 'en' ? 'font-semibold' : '' }}">EN</button>
+                        <a href="{{ route('locale.switch', 'de') }}" @click="open = false" class="text-xl text-white hover:text-gray-300 transition-colors {{ app()->getLocale() === 'de' ? 'font-semibold' : '' }}" title="{{ __('common.switch_to_german') }}">DE</a>
+                        <a href="{{ route('locale.switch', 'en') }}" @click="open = false" class="text-xl text-white hover:text-gray-300 transition-colors {{ app()->getLocale() === 'en' ? 'font-semibold' : '' }}" title="{{ __('common.switch_to_english') }}">EN</a>
                     </div>
                 </div>
             @endif

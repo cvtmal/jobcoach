@@ -27,6 +27,7 @@ return [
     ],
 
     // Common text
+    'app_title' => ':app - Swiss Job Search Support',
     'switzerland' => 'Switzerland',
     'per_month' => '/month',
     'cancel_anytime' => 'Cancel anytime',
@@ -42,4 +43,6 @@ return [
     'language' => 'Language',
     'german' => 'Deutsch',
     'english' => 'English',
+    'switch_to_german' => 'Zu Deutsch wechseln',
+    'switch_to_english' => 'Switch to English',
 ];
